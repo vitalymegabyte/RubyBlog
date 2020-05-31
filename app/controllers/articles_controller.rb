@@ -27,6 +27,10 @@ end
   
   def show
     @article = Article.find_by_slug!(params[:slug])
+    unless @article
+      @article = Article.find(params[:slug])
+    end
+
   end
 
   def  update
