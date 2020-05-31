@@ -15,12 +15,16 @@
   <% end %>
 
   <p>
-    <%= form.label :title %>
+  <%= form.label :title %><br/>
     <%= form.text_field :title %>
+  </p>
+  <p>
+  <%= form.label :slug %><br/>
+    <%= form.text_area :slug %>
   </p>
 
   <p>
-    <%= form.label :text %>
+  <%= form.label :text %><br/>
     <%= form.text_area :text %>
   </p>
 

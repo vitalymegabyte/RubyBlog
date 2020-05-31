@@ -1,6 +1,8 @@
 class ArticlesController < ApplicationController
   http_basic_authenticate_with name: "dhh", password: "secret", except: [:index, :show]
-
+def to_param
+  "#{slug}/".downcase
+end
   def index
     @articles = Article.all
   end
@@ -24,7 +26,7 @@ class ArticlesController < ApplicationController
   end
   
   def show
-    @article = Article.find(params[:id])
+    @article = Article.find_by_slug!(params[:slug])
   end
 
   def  update
@@ -45,6 +47,6 @@ class ArticlesController < ApplicationController
 
   private
   def article_params
-    params.require(:article).permit(:title, :text)
+    params.require(:article).permit(:title, :text, :slug)
   end
 end
