@@ -1,0 +1,3 @@
+CREATE USER vitaly@'%' IDENTIFIED BY '12345678';
+CREATE DATABASE blog_development;
+GRANT ALL PRIVILEGES ON *.* TO vitaly@'%';
