@@ -8,12 +8,13 @@ COPY Gemfile.lock /myapp/Gemfile.lock
 RUN bundle install
 RUN bundle update bootsnap
 COPY . /myapp
-RUN chmod -R 777 .
-RUN chmod +x init.sql
+#RUN chmod -R 777 .
+#RUN chmod +x init.sql
 # Add a script to be executed every time the container starts.
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]
+RUN chown -R app:app  /myapp
 EXPOSE 3000
 USER app
 # Start the main process.
